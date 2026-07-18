@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>LinqFirstProof.Benchmarks.LinqFirstBench-20260718-174308</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.8, Windows 10 (10.0.20348.5256)
+Intel Xeon Silver 4314 CPU 2.40GHz, 2 CPU, 64 logical and 32 physical cores
+.NET SDK 11.0.100-preview.5.26302.115
+  [Host]    : .NET 10.0.1 (10.0.1, 10.0.125.57005), X64 RyuJIT x86-64-v4
+  .NET 10.0 : .NET 10.0.1 (10.0.1, 10.0.125.57005), X64 RyuJIT x86-64-v4
+  .NET 8.0  : .NET 8.0.16 (8.0.16, 8.0.1625.21506), X64 RyuJIT x86-64-v4
+  .NET 9.0  : .NET 9.0.5 (9.0.5, 9.0.525.21509), X64 RyuJIT x86-64-v4
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method    </th><th>Job</th><th>Runtime</th><th>Size</th><th>Mean   </th><th>Error </th><th>StdDev</th><th>Ratio</th><th>RatioSD</th><th>Allocated</th><th>Alloc Ratio</th>
+</tr>
+</thead><tbody><tr><td>First_Linq</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100</td><td>65.23 ns</td><td>0.216 ns</td><td>0.191 ns</td><td>0.72</td><td>0.00</td><td>24 B</td><td>0.27</td>
+</tr><tr><td>First_LinqCached</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100</td><td>55.89 ns</td><td>0.210 ns</td><td>0.186 ns</td><td>0.62</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_For</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100</td><td>75.92 ns</td><td>0.250 ns</td><td>0.222 ns</td><td>0.84</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Foreach</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100</td><td>95.10 ns</td><td>0.605 ns</td><td>0.566 ns</td><td>1.05</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Count_Linq</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100</td><td>60.74 ns</td><td>0.266 ns</td><td>0.236 ns</td><td>0.67</td><td>0.00</td><td>24 B</td><td>0.27</td>
+</tr><tr><td>Count_For</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100</td><td>74.29 ns</td><td>0.276 ns</td><td>0.258 ns</td><td>0.82</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Sum_Control</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100</td><td>24.45 ns</td><td>0.042 ns</td><td>0.037 ns</td><td>0.27</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Linq</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100</td><td>771.36 ns</td><td>4.654 ns</td><td>4.353 ns</td><td>8.53</td><td>0.07</td><td>128 B</td><td>1.45</td>
+</tr><tr><td>First_LinqCached</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100</td><td>763.84 ns</td><td>2.369 ns</td><td>1.978 ns</td><td>8.44</td><td>0.06</td><td>40 B</td><td>0.45</td>
+</tr><tr><td>First_For</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100</td><td>104.89 ns</td><td>0.425 ns</td><td>0.397 ns</td><td>1.16</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Foreach</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100</td><td>91.09 ns</td><td>0.458 ns</td><td>0.406 ns</td><td>1.01</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Count_Linq</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100</td><td>824.76 ns</td><td>5.205 ns</td><td>4.346 ns</td><td>9.12</td><td>0.07</td><td>128 B</td><td>1.45</td>
+</tr><tr><td>Count_For</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100</td><td>76.86 ns</td><td>0.143 ns</td><td>0.127 ns</td><td>0.85</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Sum_Control</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100</td><td>23.73 ns</td><td>0.079 ns</td><td>0.074 ns</td><td>0.26</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Linq</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100</td><td>90.48 ns</td><td>0.609 ns</td><td>0.570 ns</td><td>1.00</td><td>0.01</td><td>88 B</td><td>1.00</td>
+</tr><tr><td>First_LinqCached</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100</td><td>57.64 ns</td><td>0.276 ns</td><td>0.245 ns</td><td>0.64</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_For</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100</td><td>76.02 ns</td><td>0.256 ns</td><td>0.240 ns</td><td>0.84</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Foreach</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100</td><td>90.88 ns</td><td>0.135 ns</td><td>0.113 ns</td><td>1.00</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Count_Linq</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100</td><td>91.57 ns</td><td>0.643 ns</td><td>0.570 ns</td><td>1.01</td><td>0.01</td><td>88 B</td><td>1.00</td>
+</tr><tr><td>Count_For</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100</td><td>74.29 ns</td><td>0.167 ns</td><td>0.140 ns</td><td>0.82</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Sum_Control</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100</td><td>20.86 ns</td><td>0.088 ns</td><td>0.082 ns</td><td>0.23</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Linq</td><td>.NET 10.0</td><td>.NET 10.0</td><td>1000</td><td>559.41 ns</td><td>2.046 ns</td><td>1.814 ns</td><td>0.75</td><td>0.00</td><td>24 B</td><td>0.27</td>
+</tr><tr><td>First_LinqCached</td><td>.NET 10.0</td><td>.NET 10.0</td><td>1000</td><td>557.09 ns</td><td>4.445 ns</td><td>3.940 ns</td><td>0.75</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_For</td><td>.NET 10.0</td><td>.NET 10.0</td><td>1000</td><td>726.36 ns</td><td>3.596 ns</td><td>2.807 ns</td><td>0.98</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Foreach</td><td>.NET 10.0</td><td>.NET 10.0</td><td>1000</td><td>897.29 ns</td><td>2.826 ns</td><td>2.643 ns</td><td>1.21</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>Count_Linq</td><td>.NET 10.0</td><td>.NET 10.0</td><td>1000</td><td>565.77 ns</td><td>1.226 ns</td><td>1.087 ns</td><td>0.76</td><td>0.00</td><td>24 B</td><td>0.27</td>
+</tr><tr><td>Count_For</td><td>.NET 10.0</td><td>.NET 10.0</td><td>1000</td><td>739.00 ns</td><td>5.258 ns</td><td>4.919 ns</td><td>1.00</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Sum_Control</td><td>.NET 10.0</td><td>.NET 10.0</td><td>1000</td><td>107.67 ns</td><td>0.311 ns</td><td>0.275 ns</td><td>0.14</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Linq</td><td>.NET 8.0</td><td>.NET 8.0</td><td>1000</td><td>7,088.80 ns</td><td>23.926 ns</td><td>22.380 ns</td><td>9.55</td><td>0.03</td><td>128 B</td><td>1.45</td>
+</tr><tr><td>First_LinqCached</td><td>.NET 8.0</td><td>.NET 8.0</td><td>1000</td><td>7,111.26 ns</td><td>51.863 ns</td><td>45.975 ns</td><td>9.58</td><td>0.06</td><td>40 B</td><td>0.45</td>
+</tr><tr><td>First_For</td><td>.NET 8.0</td><td>.NET 8.0</td><td>1000</td><td>1,064.97 ns</td><td>4.105 ns</td><td>3.639 ns</td><td>1.43</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Foreach</td><td>.NET 8.0</td><td>.NET 8.0</td><td>1000</td><td>895.59 ns</td><td>2.130 ns</td><td>1.993 ns</td><td>1.21</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>Count_Linq</td><td>.NET 8.0</td><td>.NET 8.0</td><td>1000</td><td>7,104.09 ns</td><td>28.486 ns</td><td>25.252 ns</td><td>9.57</td><td>0.04</td><td>128 B</td><td>1.45</td>
+</tr><tr><td>Count_For</td><td>.NET 8.0</td><td>.NET 8.0</td><td>1000</td><td>786.04 ns</td><td>7.824 ns</td><td>7.319 ns</td><td>1.06</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Sum_Control</td><td>.NET 8.0</td><td>.NET 8.0</td><td>1000</td><td>119.74 ns</td><td>0.348 ns</td><td>0.325 ns</td><td>0.16</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Linq</td><td>.NET 9.0</td><td>.NET 9.0</td><td>1000</td><td>742.62 ns</td><td>1.259 ns</td><td>1.051 ns</td><td>1.00</td><td>0.00</td><td>88 B</td><td>1.00</td>
+</tr><tr><td>First_LinqCached</td><td>.NET 9.0</td><td>.NET 9.0</td><td>1000</td><td>546.43 ns</td><td>1.387 ns</td><td>1.298 ns</td><td>0.74</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_For</td><td>.NET 9.0</td><td>.NET 9.0</td><td>1000</td><td>741.27 ns</td><td>5.624 ns</td><td>5.261 ns</td><td>1.00</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Foreach</td><td>.NET 9.0</td><td>.NET 9.0</td><td>1000</td><td>895.09 ns</td><td>2.136 ns</td><td>1.998 ns</td><td>1.21</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>Count_Linq</td><td>.NET 9.0</td><td>.NET 9.0</td><td>1000</td><td>747.34 ns</td><td>2.865 ns</td><td>2.680 ns</td><td>1.01</td><td>0.00</td><td>88 B</td><td>1.00</td>
+</tr><tr><td>Count_For</td><td>.NET 9.0</td><td>.NET 9.0</td><td>1000</td><td>740.14 ns</td><td>4.497 ns</td><td>3.987 ns</td><td>1.00</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Sum_Control</td><td>.NET 9.0</td><td>.NET 9.0</td><td>1000</td><td>106.11 ns</td><td>0.840 ns</td><td>0.786 ns</td><td>0.14</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Linq</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100000</td><td>96,326.77 ns</td><td>551.555 ns</td><td>515.925 ns</td><td>0.87</td><td>0.01</td><td>24 B</td><td>0.27</td>
+</tr><tr><td>First_LinqCached</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100000</td><td>95,020.50 ns</td><td>577.465 ns</td><td>540.161 ns</td><td>0.86</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_For</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100000</td><td>109,597.72 ns</td><td>780.307 ns</td><td>729.900 ns</td><td>0.99</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Foreach</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100000</td><td>116,843.66 ns</td><td>483.834 ns</td><td>404.023 ns</td><td>1.06</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Count_Linq</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100000</td><td>95,559.05 ns</td><td>769.406 ns</td><td>719.702 ns</td><td>0.86</td><td>0.01</td><td>24 B</td><td>0.27</td>
+</tr><tr><td>Count_For</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100000</td><td>109,387.29 ns</td><td>700.202 ns</td><td>620.711 ns</td><td>0.99</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Sum_Control</td><td>.NET 10.0</td><td>.NET 10.0</td><td>100000</td><td>9,879.31 ns</td><td>82.224 ns</td><td>76.912 ns</td><td>0.09</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Linq</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100000</td><td>636,911.82 ns</td><td>2,969.525 ns</td><td>2,777.695 ns</td><td>5.76</td><td>0.04</td><td>128 B</td><td>1.45</td>
+</tr><tr><td>First_LinqCached</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100000</td><td>671,563.85 ns</td><td>1,734.909 ns</td><td>1,537.952 ns</td><td>6.07</td><td>0.03</td><td>40 B</td><td>0.45</td>
+</tr><tr><td>First_For</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100000</td><td>111,072.53 ns</td><td>594.867 ns</td><td>556.439 ns</td><td>1.00</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Foreach</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100000</td><td>115,646.17 ns</td><td>485.176 ns</td><td>405.144 ns</td><td>1.05</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Count_Linq</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100000</td><td>709,899.35 ns</td><td>4,436.784 ns</td><td>4,150.171 ns</td><td>6.42</td><td>0.05</td><td>128 B</td><td>1.45</td>
+</tr><tr><td>Count_For</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100000</td><td>108,507.52 ns</td><td>337.068 ns</td><td>298.802 ns</td><td>0.98</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Sum_Control</td><td>.NET 8.0</td><td>.NET 8.0</td><td>100000</td><td>11,725.07 ns</td><td>56.986 ns</td><td>50.517 ns</td><td>0.11</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Linq</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100000</td><td>110,600.97 ns</td><td>606.802 ns</td><td>537.914 ns</td><td>1.00</td><td>0.01</td><td>88 B</td><td>1.00</td>
+</tr><tr><td>First_LinqCached</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100000</td><td>94,919.39 ns</td><td>996.464 ns</td><td>932.093 ns</td><td>0.86</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_For</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100000</td><td>107,543.06 ns</td><td>450.962 ns</td><td>421.830 ns</td><td>0.97</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>First_Foreach</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100000</td><td>116,674.71 ns</td><td>314.126 ns</td><td>293.834 ns</td><td>1.05</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Count_Linq</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100000</td><td>109,203.07 ns</td><td>491.577 ns</td><td>459.821 ns</td><td>0.99</td><td>0.01</td><td>88 B</td><td>1.00</td>
+</tr><tr><td>Count_For</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100000</td><td>108,813.33 ns</td><td>516.343 ns</td><td>482.988 ns</td><td>0.98</td><td>0.01</td><td>-</td><td>0.00</td>
+</tr><tr><td>Sum_Control</td><td>.NET 9.0</td><td>.NET 9.0</td><td>100000</td><td>10,018.95 ns</td><td>117.362 ns</td><td>109.780 ns</td><td>0.09</td><td>0.00</td><td>-</td><td>0.00</td>
+</tr></tbody></table>
+</body>
+</html>
